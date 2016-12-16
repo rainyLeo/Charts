@@ -12,7 +12,7 @@
         v-model="value.y"
         @change="handleData($event)">
     </div>
-    <!-- <button id="button">确定</button> -->
+    <button id="button">确定</button>
   </div>
 </div>
 </template>
