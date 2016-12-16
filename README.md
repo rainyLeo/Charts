@@ -1,4 +1,4 @@
-# my-project-2
+# Vue.js Chart Component with Highcharts
 
 > A Vue.js project
 
