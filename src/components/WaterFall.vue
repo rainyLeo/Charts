@@ -50,7 +50,6 @@ export default {
         color: Highcharts.getOptions()
           .colors[1]
       }],
-      // initData: 0
       chart: ''
     }
   },
