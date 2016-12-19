@@ -52,7 +52,7 @@ export default {
 			noChangeData: [2, 2, 4, 6],
 			inflowData: [55, 60, 54, 41],
 			categories: ['Over $1bn', '$500-999mn', '$100-499mn', 'Less than $100mn'],
-			checked: false
+			checked: null
 		}
 	},
 	computed: {},
@@ -71,7 +71,7 @@ export default {
 		handleClick() {
 			if (this.checked) {
 				this.renderChart()
-			} else {
+			} else if (this.checked === false) {
 				window.alert('请正确填写所有输入框')
 			}
 		},
@@ -185,12 +185,35 @@ table {
 	vertical-align: middle;
 }
 
+table {
+	font-size: 15px;
+}
+
 td {
-	width: 150px
+	width: 150px;
+	padding: 3px 0 5px 0;
 }
 
 button {
-	display: block;
-	margin: 20px auto;
+	outline: none;
+	background-color: #4CAF50;
+	border-radius: 4px;
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+</style>
+
+<style scoped>
+button {
+	margin-left: 35%;
 }
 </style>

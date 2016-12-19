@@ -41,7 +41,8 @@ export default {
 	name: 'ScatterPlot',
 	data() {
 		return {
-			data: data
+			data: data,
+			checked: null
 		}
 	},
 	computed: {},
@@ -60,7 +61,7 @@ export default {
 		handleClick() {
 			if (this.checked) {
 				this.renderChart()
-			} else {
+			} else if (this.checked === false) {
 				window.alert('请正确填写所有输入框')
 			}
 		},
@@ -131,4 +132,8 @@ export default {
 }
 </script>
 
-
+<style scoped>
+button {
+	margin-left: 26%;
+}
+</style>

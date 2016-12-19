@@ -51,7 +51,7 @@ export default {
         color: Highcharts.getOptions()
           .colors[1]
       }],
-      checked: false
+      checked: null
     }
   },
   computed: {
@@ -74,7 +74,7 @@ export default {
     handleClick() {
       if (this.checked) {
         this.renderChart()
-      } else {
+      } else if (this.checked === false) {
         window.alert('请正确填写所有输入框')
       }
     },
@@ -139,44 +139,22 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
 div#input {
   margin: 0 auto;
   width: 60%;
 }
 
 div#input div {
-  /*overflow: hidden;*/
   text-align: right;
   padding-right: 35%;
 }
 
 div#input label {
-  /*float: left;*/
   text-align: right;
   margin-right: 20px;
 }
 
 button {
-  display: block;
-  margin: 20px auto;
+  margin-left: 50%;
 }
 </style>

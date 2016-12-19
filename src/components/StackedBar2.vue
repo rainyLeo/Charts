@@ -53,7 +53,8 @@ export default {
 			inflowData: [86, 52, 48, 45, 43, 42, 41, 37],
 			categories: ['Niche Stratagies', 'CTAs', 'Multi-Stratagy', 'Equity Stratagies',
 				'Credit Stratagies', 'Event Driven Stratagies', 'Macro Stratagies', 'Relative Value Stratagies'
-			]
+			],
+			checked: null
 		}
 	},
 	computed: {},
@@ -72,7 +73,7 @@ export default {
 		handleClick() {
 			if (this.checked) {
 				this.renderChart()
-			} else {
+			} else if (this.checked === false) {
 				window.alert('请正确填写所有输入框')
 			}
 		},
@@ -143,47 +144,11 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-	font-weight: normal;
+tbody td:first-child {
+	width: 190px;
 }
 
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-li {
-	display: inline-block;
-	margin: 0 10px;
-}
-
-a {
-	color: #42b983;
-}
-
-#input {
-	width: 80%;
-	margin-top: 15px;
-	margin-left: 25%;
-}
-
-table,
-thead,
-tbody,
-tr,
-th,
-td {
-	border: 1px solid #888
-}
-
-table {
-	border-collapse: collapse;
-	text-align: center;
-	vertical-align: middle;
-}
-
-td {
-	width: 150px
+button {
+	margin-left: calc(39% + 4px);
 }
 </style>
