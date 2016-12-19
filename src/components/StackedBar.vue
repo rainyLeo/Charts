@@ -35,6 +35,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<button id="button"
+				@click="handleClick">确定</button>
 	</div>
 </div>
 </template>
@@ -49,7 +51,8 @@ export default {
 			outflowData: [43, 38, 42, 53],
 			noChangeData: [2, 2, 4, 6],
 			inflowData: [55, 60, 54, 41],
-			categories: ['Over $1bn', '$500-999mn', '$100-499mn', 'Less than $100mn']
+			categories: ['Over $1bn', '$500-999mn', '$100-499mn', 'Less than $100mn'],
+			checked: false
 		}
 	},
 	computed: {},
@@ -59,9 +62,17 @@ export default {
 			if (!value || value > 100 || value < 0) {
 				window.alert('请输入0 ~ 100之间的数字')
 				event.target.value = ''
+				this.checked = false
 				return
 			} else {
+				this.checked = true
+			}
+		},
+		handleClick() {
+			if (this.checked) {
 				this.renderChart()
+			} else {
+				window.alert('请正确填写所有输入框')
 			}
 		},
 		renderChart() {
@@ -176,5 +187,10 @@ table {
 
 td {
 	width: 150px
+}
+
+button {
+	display: block;
+	margin: 20px auto;
 }
 </style>

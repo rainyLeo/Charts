@@ -28,6 +28,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<button id="button"
+				@click="handleClick">确定</button>
 	</div>
 </div>
 </template>
@@ -49,9 +51,17 @@ export default {
 			if (!value || value > 100 || value < -100) {
 				window.alert('请输入 -100 ~ 100 之间的数字')
 				event.target.value = ''
+				this.checked = false
 				return
 			} else {
+				this.checked = true
+			}
+		},
+		handleClick() {
+			if (this.checked) {
 				this.renderChart()
+			} else {
+				window.alert('请正确填写所有输入框')
 			}
 		},
 		renderChart() {

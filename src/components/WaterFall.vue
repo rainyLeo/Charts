@@ -12,8 +12,9 @@
         v-model="value.y"
         @change="handleData($event)">
     </div>
-    <button id="button">确定</button>
   </div>
+  <button id="button"
+    @click="handleClick">确定</button>
 </div>
 </template>
 
@@ -50,7 +51,7 @@ export default {
         color: Highcharts.getOptions()
           .colors[1]
       }],
-      chart: ''
+      checked: false
     }
   },
   computed: {
@@ -64,20 +65,23 @@ export default {
       if (!value || value > 20 || value < -20) {
         window.alert('请输入-20 ~ 20之间的数字')
         event.target.value = ''
+        this.checked = false
         return
       } else {
+        this.checked = true
+      }
+    },
+    handleClick() {
+      if (this.checked) {
         this.renderChart()
+      } else {
+        window.alert('请正确填写所有输入框')
       }
     },
     renderChart() {
       let data = this.riskData
-      this.chart = Highcharts.chart('container', {
+      Highcharts.chart('container', {
         chart: {
-          // events: {
-          //   redraw: function() {
-          //     var label = this.renderer.label('The chart was just redrawn', 100, 120)
-          //   }
-          // },
           type: 'waterfall'
         },
 
@@ -169,5 +173,10 @@ div#input label {
   /*float: left;*/
   text-align: right;
   margin-right: 20px;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
 }
 </style>

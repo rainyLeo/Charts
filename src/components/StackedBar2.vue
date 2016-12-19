@@ -35,6 +35,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<button id="button"
+				@click="handleClick">确定</button>
 	</div>
 </div>
 </template>
@@ -56,6 +58,24 @@ export default {
 	},
 	computed: {},
 	methods: {
+		handleData(event) {
+			let value = +event.target.value
+			if (!value || value > 100 || value < 0) {
+				window.alert('请输入0 ~ 100之间的数字')
+				event.target.value = ''
+				this.checked = false
+				return
+			} else {
+				this.checked = true
+			}
+		},
+		handleClick() {
+			if (this.checked) {
+				this.renderChart()
+			} else {
+				window.alert('请正确填写所有输入框')
+			}
+		},
 		renderChart() {
 			Highcharts.chart('container', {
 				chart: {
@@ -74,7 +94,7 @@ export default {
 						text: 'Proportion of Funds'
 					},
 					labels: {
-						formatter: function () {
+						formatter: function() {
 							return this.value + ' %'
 						}
 					}
@@ -95,7 +115,7 @@ export default {
 					bar: {
 						dataLabels: {
 							enabled: true,
-							formatter: function () {
+							formatter: function() {
 								return Highcharts.numberFormat(this.y, 0, '.') + '%'
 							}
 						}
@@ -114,16 +134,6 @@ export default {
 					color: '#40A900',
 				}]
 			})
-		},
-		handleData(event) {
-			let value = +event.target.value
-			if (!value || value > 100 || value < 0) {
-				window.alert('请输入0 ~ 100之间的数字')
-				event.target.value = ''
-				return
-			} else {
-				this.renderChart()
-			}
 		}
 	},
 	mounted() {
